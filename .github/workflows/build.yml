@@ -20,15 +20,16 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      - name: Build APK
+        run: ./gradlew assembleGplayDebug
 
-      - name: Find APK
-        run: find . -name "*.apk"
-      
+      - name: Copy APK to project root
+        run: |
+          APK_PATH=$(find . -type f -name "*.apk" | head -n 1)
+          cp "$APK_PATH" ./diia-debug.apk
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: |
-            **/build/outputs/apk/debug/*.apk
+          path: diia-debug.apk
