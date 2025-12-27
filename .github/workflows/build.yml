@@ -20,6 +20,9 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
+      - name: List variants
+        run: ./gradlew tasks --all | grep Debug
+
       - name: Build APK
         run: ./gradlew assembleGplayDebug
 
