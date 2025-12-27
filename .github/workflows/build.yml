@@ -24,7 +24,7 @@ jobs:
         run: ./gradlew tasks --all | grep Debug
 
       - name: Build APK
-        run: ./gradlew assembleGplayDebug
+        run: ./gradlew assembleGplayRelease
 
       - name: Copy APK to project root
         run: |
